@@ -18,8 +18,9 @@ const generateComponent = async (toolbox, componentName) => {
     return;
   }
 
-  const name = pascalCase(componentName || paramName);
-  const filename = kebabCase(componentName || paramName);
+  const tempName = componentName || paramName;
+  const name = pascalCase(tempName);
+  const filename = kebabCase(tempName);
   const folder = `src/components/${filename}`;
 
   // verify the component doesn't exist already
@@ -51,7 +52,7 @@ const generateComponent = async (toolbox, componentName) => {
 
   filesystem.append(
     'src/components/index.js',
-    `\nexport { default as ${name} } from './${filename}';`
+    `export { default as ${name} } from './${filename}';`
   );
 
   print.info(`Generated component ${print.colors.yellow(name)}`);

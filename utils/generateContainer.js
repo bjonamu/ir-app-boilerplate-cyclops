@@ -16,23 +16,19 @@ const generateContainer = async (toolbox, containerName) => {
     return;
   }
 
-  let name = pascalCase(containerName || paramName);
+  const tempName = containerName || paramName;
+  const name = pascalCase(tempName);
+  const filename = kebabCase(tempName);
+  const folder = `src/containers/${filename}`;
 
-  if (!name.endsWith('Container')) {
-    name = `${name}Container`;
-  }
-  const filename = kebabCase(name);
-
-  const target = `src/containers/${filename}.jsx`;
-
-  // verify the container doesn't exist already
-  if (filesystem.exists(target) === 'file') {
+  // verify the component doesn't exist already
+  if (filesystem.exists(folder) === 'dir') {
     print.error(`Container ${print.colors.yellow(name)} already exists.`);
     return;
   }
 
   await generate({
-    target,
+    target: `${folder}/index.jsx`,
     template: 'container.ejs',
     props: { name }
   });
