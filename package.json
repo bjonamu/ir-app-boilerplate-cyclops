@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bjonamu/ir-app-boilerplate-adam.git"
+    "url": "git+https://github.com/bjonamu/ir-app-boilerplate-cyclops.git"
   },
   "keywords": [
     "boilerplate"
@@ -18,9 +18,9 @@
   "author": "Blessing Jonamu",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bjonamu/ir-app-boilerplate-adam/issues"
+    "url": "https://github.com/bjonamu/ir-app-boilerplate-cyclops/issues"
   },
-  "homepage": "https://github.com/bjonamu/ir-app-boilerplate-adam#readme",
+  "homepage": "https://github.com/bjonamu/ir-app-boilerplate-cyclops#readme",
   "dependencies": {
     "ramda": "^0.25.0"
   }
