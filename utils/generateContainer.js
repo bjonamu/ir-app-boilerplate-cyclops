@@ -7,7 +7,10 @@ const generateContainer = async (toolbox, containerName) => {
     filesystem
   } = toolbox;
   const { isBlank, pascalCase, kebabCase } = strings;
-  const { first: paramName } = parameters;
+  const {
+    first: paramName,
+    options: { p, path }
+  } = parameters;
 
   // validation
   if (!containerName && isBlank(paramName)) {
@@ -19,7 +22,8 @@ const generateContainer = async (toolbox, containerName) => {
   const tempName = containerName || paramName;
   const name = pascalCase(tempName);
   const filename = kebabCase(tempName);
-  const folder = `src/containers/${filename}`;
+  const base = p || path;
+  const folder = `src/containers${base ? `/${base}` : ''}/${filename}`;
 
   // verify the component doesn't exist already
   if (filesystem.exists(folder) === 'dir') {
